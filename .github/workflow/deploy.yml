@@ -1,29 +1,17 @@
-name: Deploy to Vercel
+name: Test Workflow
 
 on:
   push:
     branches:
-      - main   # 这里改成你想触发部署的分支
+      - main   # 监听 main 分支的 push，你可以改成自己分支名
 
 jobs:
-  deploy:
+  test-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run build
-        run: npm run build
-
-      - name: Trigger Vercel Deployment
-        run: |
-          curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
+      - name: Print hello
+        run: echo "🎉 GitHub Actions is running!"
