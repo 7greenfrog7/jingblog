@@ -1,0 +1,17 @@
+name: Test Workflow
+
+on:
+  push:
+    branches:
+      - main   # 监听 main 分支的 push，你可以改成自己分支名
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Print hello
+        run: echo "🎉 GitHub Actions is running!"
